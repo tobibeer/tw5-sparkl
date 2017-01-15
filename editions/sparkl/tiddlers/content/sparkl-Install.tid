@@ -1,0 +1,14 @@
+created: 20170113181742172
+creator: Tobias Beer
+modified: 20170115162254042
+modifier: Tobias Beer
+number: 7
+title: sparkl-Install
+type: text/vnd.tiddlywiki
+
+<<plugin-install sparkl>>
+
+!! Version History
+
+; 0.5.0 / 2017-01-15
+: initial version

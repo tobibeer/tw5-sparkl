@@ -1,0 +1,5 @@
+title: $:/plugins/tobibeer/sparkl/styles
+
+$:/plugins/tobibeer/sparkl/styles
+
+<pre><$text text={{$:/plugins/tobibeer/sparkl/css}}/></pre>

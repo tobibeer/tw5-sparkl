@@ -1,0 +1,8 @@
+title: $:/plugins/tobibeer/sparkl/defaults
+
+<dl>
+<$list filter="[all[system+shadows]prefix[$:/plugins/tobibeer/sparkl/defaults/]]">
+<dt><$link><$view field="title"/></$link></dt>
+<dd><code><$text text={{!!text}}/></code></dd>
+</$list>
+</dl>

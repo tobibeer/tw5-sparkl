@@ -1,0 +1,16 @@
+created: 20170114113324642
+creator: Tobias Beer
+modified: 20170115162228785
+modifier: Tobias Beer
+number: 5
+tags: 
+title: sparkl-Styles
+type: text/vnd.tiddlywiki
+
+The sparkl widget creates elements with these classes:
+
+|!Class|!Description|
+|`tc-sparkl`|a wrapper for the sparkline diagram|
+|`tc-sparkl-bar`|each bar in a sparkline diagram with vertical bars<br>» a bar contains a ''b'' element where...<br>» ''border-bottom''=`<value>`, ''border-top''=`<background>`|
+
+In the default styles, colors are defined via [[defaults|sparkl-Defaults]] so you don't need to modify the stylesheet just to change colors. They are shipped via <<source "$:/plugins/tobibeer/sparkl/css">>

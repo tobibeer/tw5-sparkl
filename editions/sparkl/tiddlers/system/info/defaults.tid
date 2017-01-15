@@ -1,0 +1,14 @@
+title: $:/.tb/demo/sparkl/defaults
+type: application/x-tiddler-dictionary
+
+bg: the background color for a bar
+fg: the foregournd color for a bar
+fg-hover: the foregournd color for a bar on hover
+bg-hover: the background color for a bar on hover
+default: default value when no value for field<br>» only when using a value filter
+min: the min value of the scale
+max: the max value of the scale
+width: the width of a bar
+margin: the left margin to a bar
+segments: the number of segments to the scale
+link: links bars to titles<br>» only when using a value filter

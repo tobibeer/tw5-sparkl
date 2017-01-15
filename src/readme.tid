@@ -1,0 +1,32 @@
+title: $:/plugins/tobibeer/sparkl/readme
+
+\define D(v,d)
+<$vars v="$:/plugins/tobibeer/sparkl/defaults/$v$">
+''$v$'': $d$ <$list filter="[<v>shadowsource[]]" variable="none"> / default: <code><$view tiddler=<<v>>/></code></$list>
+</$vars>
+\end
+
+The plugin $:/plugins/tobibeer/sparkl provides:
+
+; <$text text="<$sparkl/>"/>
+: a widget to render simple sparkline diagrams
+
+; Attributes
+: <<D values "space separated values<br>&nbsp;&nbsp;&nbsp;» or a filter like `[[%title%]get[number]]` for each `%title%` in ''titles''">>
+: <<D titles "filter for titles">>
+: <<D class "css class">>
+: <<D default "default when no value for field">>
+: <<D min "defined min for scale">>
+: <<D max "defined max for scale">>
+: <<D width "of a bar">>
+: <<D margin "left margin for a bar">>
+: <<D segments "accuracy of the scale">>
+: <<D link "links bars to titles">>
+
+; <$text text="<<sparkl values titles class default min max width margin segments>>"/>
+: a simple macro wrapper
+
+<br>
+
+; documentation / examples / demos...
+: http://tobibeer.github.io/tw5-plugins#sparkl

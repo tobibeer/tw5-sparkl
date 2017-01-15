@@ -1,0 +1,16 @@
+title: $:/plugins/tobibeer/sparkl/macro
+tags: $:/tags/Macro
+
+\define sparkl(values,titles,class,default,min,max,width,margin,segments,link)
+<$sparkl
+values="""$values$"""
+titles="""$titles$"""
+class="""$class$"""
+default="""$default$"""
+min="""$min$"""
+max="""$max$"""
+width="""$width$"""
+margin="""$margin$"""
+segments="""$segments$"""
+link="""$link$"""/>
+\end

@@ -1,0 +1,33 @@
+title: $:/plugins/tobibeer/sparkl/css
+tags: $:/tags/Stylesheet
+
+\define color(id) {{$:/plugins/tobibeer/sparkl/defaults/colors/$id$}}
+
+.tc-sparkl{
+	border: 0;
+	background:  <<color bg>>;
+}
+
+.tc-sparkl-bar {
+	height:1em;
+	display:inline-block;
+	overflow:hidden;
+}
+
+.tc-sparkl-bar b {
+	outline: 0;
+	height:0;
+	display:inline-block;
+	vertical-align: top;
+	border-left-color:transparent;
+	border-top-color:transparent;
+	border-top-style:solid;
+	border-bottom: 2em solid <<color fg>>;
+	background: transparent;
+	box-sizing:content-box;
+}
+
+.tc-sparkl-bar:hover b{
+	border-top-color: <<color bg-hover>>;
+	border-bottom-color: <<color fg-hover>>;
+}

@@ -1,0 +1,93 @@
+created: 20170115111008889
+creator: Tobias Beer
+modified: 20170115164930547
+modifier: Tobias Beer
+number: 3
+tags: 
+title: sparkl-Examples
+type: text/vnd.tiddlywiki
+
+\define default(id)
+''$id$''=<code>"{{$:/plugins/tobibeer/sparkl/defaults/$id$}}"</code>
+\end
+
+Reading values from a ''number'' field...
+
+<<` """before <$sparkl
+values="[[%title%]get[number]]"
+titles="[prefix[sparkl]sort[number]]"/> after""">>
+
+The same, but not linking to titles...
+
+<<` """before <$sparkl
+values="[[%title%]get[number]]"
+titles="[prefix[sparkl]sort[number]]"
+link="no"/> after""">>
+
+
+Low accuracy via few segments, margin suppressed...
+
+<<` """before <$sparkl
+values="11 12 13 14 15 16 17 18 19 20"
+min="50%"
+margin="0"
+width="5px"
+segments="3"/> after""">>
+
+In the examples below, try to understand the scale variations rendered, especially with respect to ''min'' and ''max'':
+
+In this example, the defaults <<default min>> and <<default max>> apply:
+
+<<` """before <$sparkl
+values="11 12 13 14 15 16 17 18 19 20"
+width="5px"/> after""">>
+
+Let's see how the output changes with ''min'' set to the minimum value via ''min''=`"min"`:
+
+<<` """before <$sparkl
+values="11 12 13 14 15 16 17 18 19 20"
+width="5px"
+min="min"/> after""">>
+
+Now with ''min'' as a percent value and a value for ''max'' greater than the maximum value:
+
+<<` """before <$sparkl
+values="11 12 13 14 15 16 17 18 19 20"
+width="5px"
+min="30%"
+max="25"/> after""">>
+
+Now the same, but with a ''max'' lower than the actual maximum value:
+
+<<` """before <$sparkl
+values="11 12 13 14 15 16 17 18 19 20"
+width="5px"
+min="30%"
+max="15"/> after""">>
+
+Or with ''min'' greater than the actual minimum value:
+
+<<` """before <$sparkl
+values="11 12 13 14 15 16 17 18 19 20"
+width="5px"
+min="15"/> after""">>
+
+Very few values make each bar wider.
+
+<<` """before <$sparkl
+values="10"
+min="0"
+max="20"
+segments="10"/> after""">>
+
+<<` """before <$sparkl
+values="10 15"
+min="0"
+max="20"
+segments="10"/> after""">>
+
+<<` """before <$sparkl
+values="10 15 20"
+min="0"
+max="20"
+segments="10"/> after""">>

@@ -1,0 +1,51 @@
+created: 20170114112754312
+creator: Tobias Beer
+modified: 20170115172015807
+modifier: Tobias Beer
+number: 4
+tags: 
+title: sparkl-Defaults
+type: text/vnd.tiddlywiki
+
+The sparkl widget allows to define global [[attribute defaults|sparkl-Syntax]] under the namespace `$:/tobibeer/plugins/sparkl/defaults/`:
+
+<table>
+<tr>
+<th colspan="3">
+Defaults for widget attributes, see [[Syntax|sparkl-Syntax]]
+</th>
+</tr>
+<tr>
+<th>Default</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+<$list filter="[all[shadows]prefix[$:/plugins/tobibeer/sparkl/defaults/]!prefix[$:/plugins/tobibeer/sparkl/defaults/colors]sort[title]]">
+<$set name="name" filter="[all[current]removeprefix[$:/plugins/tobibeer/sparkl/defaults/]]">
+<tr>
+<td><$link><$text text=<<name>>/></$link></td>
+<td><$transclude tiddler="$:/.tb/demo/sparkl/defaults" index=<<name>>/></td>
+<td><code><$view field="text"/></code></td>
+</tr>
+</$set>
+</$list>
+<tr>
+<th colspan="3">
+Defaults for colors, see [[Styles|sparkl-Styles]]
+</th>
+</tr>
+<tr>
+<th>Default</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+<$list filter="[all[shadows]prefix[$:/plugins/tobibeer/sparkl/defaults/colors/]sort[title]]">
+<$set name="name" filter="[all[current]removeprefix[$:/plugins/tobibeer/sparkl/defaults/colors/]]">
+<tr>
+<td><$link><$text text=<<name>>/></$link></td>
+<td><$transclude tiddler="$:/.tb/demo/sparkl/defaults" index=<<name>>/></td>
+<td><code><$view field="text"/></code></td>
+</tr>
+</$set>
+</$list>
+</table>

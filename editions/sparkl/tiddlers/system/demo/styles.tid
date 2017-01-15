@@ -1,0 +1,9 @@
+title: $:/.tb/demo/sparkl/styles
+type: text/css
+
+.pinkish .tc-sparkl-bar b {
+border-bottom-color:deeppink;
+}
+.pinkish .tc-sparkl-bar:hover b{
+border-bottom-color:#c06;
+}
