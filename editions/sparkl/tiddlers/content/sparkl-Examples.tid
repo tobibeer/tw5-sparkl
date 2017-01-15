@@ -6,6 +6,7 @@ number: 3
 tags: sparkl Examples
 title: sparkl-Examples
 type: text/vnd.tiddlywiki
+summary: examples for generating simple sparkline diagrams using the [[sparkl]] widget
 
 \define default(id)
 ''$id$''=<code>"{{$:/plugins/tobibeer/sparkl/defaults/$id$}}"</code>
