@@ -5,7 +5,7 @@ tags: $:/tags/Stylesheet
 
 .tc-sparkl{
 	border: 0;
-	background:  <<color bg>>;
+	background: <<color bg>>;
 }
 
 .tc-sparkl-bar {
@@ -17,6 +17,7 @@ tags: $:/tags/Stylesheet
 .tc-sparkl-bar b {
 	outline: 0;
 	height:0;
+	position:relative;
 	display:inline-block;
 	vertical-align: top;
 	border-left-color:transparent;
@@ -30,4 +31,22 @@ tags: $:/tags/Stylesheet
 .tc-sparkl-bar:hover b{
 	border-top-color: <<color bg-hover>>;
 	border-bottom-color: <<color fg-hover>>;
+}
+
+.tc-sparkl-dots .tc-sparkl-bar b {
+	height:2px;
+	border-bottom-color:transparent;
+}
+
+.tc-sparkl-dots .tc-sparkl-bar:hover b{
+	border-bottom-color: <<color bg-hover>>;
+}
+
+.tc-sparkl-dot {
+	position:absolute;
+	background: <<color fg>>;
+}
+
+.tc-sparkl-bar:hover .tc-sparkl-dot{
+	background: <<color fg-hover>>;
 }

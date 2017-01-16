@@ -22,6 +22,8 @@ The plugin $:/plugins/tobibeer/sparkl provides:
 : <<D margin "left margin for a bar">>
 : <<D segments "accuracy of the scale">>
 : <<D link "links bars to titles">>
+: <<D as "the sparkline diagram as `bar` (default) or `dots`">>
+: <<D dot-size "when `as=dots`, the size of dots in px">>
 
 ; <$text text="<<sparkl values titles class default min max width margin segments>>"/>
 : a simple macro wrapper

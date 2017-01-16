@@ -32,8 +32,9 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 	var self = this,
-		box,bar,classes,link,margin,max,maxWhich,min,minWhich,
-		segments,title,titles=[],v,value,values=[],wrap,width,
+		as,box,bar,classes,dot,dotSize,px,px2,h,
+		link,margin,max,maxWhich,min,minWhich,
+		segments,title,titles=[],v,value,values=[],w1,w2,wrap,width,
 		fallback = self.wiki.getTiddlerText("$:/plugins/tobibeer/sparkl/defaults/default");
 	// No values?
 	if(!self.values || !self.titles && self.filter) {
@@ -111,7 +112,7 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 				// Disable
 				0 :
 				// Otherwise, finally, enable
-				1
+				self.link
 			)
 		) :
 		0;
@@ -154,13 +155,24 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 	box.textContent = String.fromCharCode(160);
 	classes = self.classes ? self.classes.split(" ") : [];
 	classes.push("tc-sparkl");
+	as = self.as || self.wiki.getTiddlerText("$:/plugins/tobibeer/sparkl/defaults/as");
+	if(as === "dots") {
+		classes.push("tc-sparkl-dots");
+		dotSize = parseFloat(self.dotSize || self.wiki.getTiddlerText("$:/plugins/tobibeer/sparkl/defaults/dot-size"),10);
+		if(!dotSize || isNaN(dotSize)) {
+			dotSize = 2;
+		}
+	}
 	box.className = classes.join(" ");
 	parent.insertBefore(box,nextSibling);
 	for(v=0; v<values.length; v++) {
 		title = titles[v];
 		if(link) {
 			wrap = document.createElement("a");
-			wrap.setAttribute("href","#" + titles[v]);
+			title = (link || "").indexOf("%title%") < 0 ?
+				title :
+				self.wiki.filterTiddlers(link.replace(/%title%/mg,titles[v]),self)[0] || title;
+			wrap.setAttribute("href","#" + title);
 			wrap.style.cursor = "pointer";
 		} else {
 			wrap = document.createElement("span");
@@ -169,13 +181,34 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 		wrap.title = title ? title + " (" + values[v] + ")" : values[v];
 		bar = document.createElement("b");
 		bar.style.width = width;
-		value = max === min ? 0 : 1- ((values[v] - min)/(max-min));
+		value = max === min ? 0 : 1 - ((values[v] - min)/(max-min));
 		value = Math.max(0,value);
-		value = Math.round(segments*value)/segments;
-		bar.style.borderTopWidth = value + "em";
-		bar.style.marginLeft = margin;
 		wrap.appendChild(bar);
 		box.appendChild(wrap);
+		h = window.getComputedStyle(wrap, null).getPropertyValue("height");
+		h = parseFloat(h.substr(0,h.length-2),10);
+		h = as === "dots" ? (h - 3*dotSize/2) : h;
+		value = h * Math.round(segments*value)/segments;
+		bar.style.borderTopWidth = value + "px";
+		bar.style.marginLeft = margin;
+		if(as === "dots"){
+			px = dotSize + "px";
+			px2 = dotSize/2 + "px";
+			dot = document.createElement("i");
+			dot.setAttribute("class", "tc-sparkl-dot tc-sparkl-dot-" + self.dots);
+			dot.style.width = px;
+			dot.style.height = px;
+			dot.style.top = px2;
+			dot.style.borderRadius = px2;
+			dot.style.MozBorderRadius = px2;
+			dot.style.WebkitBorderRadius = px2;
+			bar.appendChild(dot);
+			w1 = window.getComputedStyle(bar, null).getPropertyValue("width");
+			w2 = window.getComputedStyle(dot, null).getPropertyValue("width");
+			w1 = parseFloat(w1.substr(0,w1.length-2),10);
+			w2 = parseFloat(w2.substr(0,w2.length-2),10);
+			dot.style.left = ((w1 - w2)/2) + "px";
+		}
 	}
 };
 
@@ -194,6 +227,15 @@ SparklWidget.prototype.execute = function() {
 	this.width = this.getAttribute("width");
 	this.margin = this.getAttribute("margin");
 	this.link = (this.getAttribute("link") || "").toLowerCase();
+	this.as = this.getAttribute("as");
+	if(this.as && this.as.indexOf("dots") === 0) {
+		this.dots = this.as.substr(5) || "";
+		this.as = "dots";
+		if(!this.dots || ["circles"].indexOf(this.dots) < 0) {
+			this.dots = "circles";
+		}
+	}
+	this.dotSize = this.getAttribute("dot-size");
 	if(this.values.indexOf("%title%") >= 0) {
 		this.filter = 1;
 	}
@@ -214,7 +256,9 @@ SparklWidget.prototype.refresh = function() {
 		changedAttributes.width ||
 		changedAttributes.margin ||
 		changedAttributes.segments ||
-		changedAttributes.link
+		changedAttributes.link ||
+		changedAttributes.as ||
+		changedAttributes.dotSize
 	  ) {
 		this.refreshSelf();
 		return true;

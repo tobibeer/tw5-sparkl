@@ -1,6 +1,6 @@
 created: 20170103192110769
 creator: Tobias Beer
-modified: 20170115171908353
+modified: 20170116225949522
 modifier: Tobias Beer
 number: 2
 title: sparkl-Syntax
@@ -20,13 +20,15 @@ The ''sparkl'' widget allows for the following attributes:
 |''class''|a css class for the sparkl|always assigned:<br>`tc-sparkl` |
 |''default''|the default value should a tiddler not exist or not have the defined field |<<defaults default>>|
 |''min''|the minimum value for the scale<br>» when `min`, uses the minimum value<br> » when `30%`, sets min to the defined % value of the range between max and min, i.e. to suggest that values don't actually start at the bottom end |<<defaults min>>|
-|''max''|the maximum value for the scale<br> »  when `max`, uses the maximum value|<<defaults max>>|
-|''width''|the width for each value|<<defaults width>>|
+|''max''|the maximum value for the scale<br> » when `max`, uses the maximum value|<<defaults max>>|
+|''width''|the width for each value<br>''note:'' I would have preferred ''em'' but that would make browsers display bars at irregular widths|<<defaults width>>|
 |''margin''|the left margin for each value|<<defaults margin>>|
 |''segments''|the number of segments for values, i.e. the accuracy |<<defaults segments>>|
-|''link''|turns bars into clickable links to the title<br>» the default only applies when ''value'' is determined via filter|<<defaults link>>|
+|''link''|when `yes`, turns a bars into a clickable link to a title<br> » use a filter like  `[[%title%]addprefix[$:/foo/]]` to compute the link target for each `%title%` in ''titles''<br>» the default only applies when ''values'' are determined via filter|<<defaults link>>|
+|''as''|by default, sparklines are rendered as a bar graph<br>» outputs a dotted graph for `as=dots`|<<defaults as>>|
+|''dot-size''|when ''as=dots'', the size of each dot in ''px''|<<defaults dot-size>>|
 
-For example...
+For [[example|sparkl-Examples]]...
 
 <<` """before <$sparkl
 values="11 12 13 14 15 16 17 18 19 20"

@@ -1,4 +1,5 @@
 title: $:/.tb/demo/sparkl/styles
+tags: $:/tags/Stylesheet
 type: text/css
 
 .pinkish .tc-sparkl-bar b {

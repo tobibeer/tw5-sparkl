@@ -1,12 +1,14 @@
 title: $:/plugins/tobibeer/sparkl/defaults/
 
+as: bars
 default: 0
 min: 0
 max: max
 margin: 1px
-width: 3px
+width: 5px
 segments: 20
 link: yes
+dot-size: 4
 colors/fg: <<colour primary>>
 colors/bg: transparent
 colors/fg-hover: <<colour message-foreground>>

@@ -11,4 +11,6 @@ max: the max value of the scale
 width: the width of a bar
 margin: the left margin to a bar
 segments: the number of segments to the scale
-link: links bars to titles<br>» only when using a value filter
+link: links bars to titles<br>» only when using a values filter
+as: the default graph type, e.g. `bar` or `dots`
+dot-size: for `as=dots`, the size of dots in ''px''
