@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 The plugin $:/plugins/tobibeer/sparkl provides:
 
 ; <$text text="<$sparkl/>"/>
-: a widget to render simple sparkline diagrams
+: a widget to render simple sparkline diagrams like <<sparkl "2 4 8 4 2">> or <<sparkl "0 3 6" as:dots>>
 : with a similar bar-graph look to [[sparkline diagrams in TWC|http://classic.tiddlywiki.com/coreplugins.html]], a bit more [[customizable|sparkl-Syntax]]
 ; <$text text="<<sparkl>>"/>
 : a [[macro|sparkl-Macro]] wrapper for the ''sparkl'' widget
