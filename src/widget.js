@@ -32,7 +32,7 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 	// We're not in a browser?
-	if(!$tw.browser) {
+	if($tw.node) {
 		// Sorry, TW's simple DOM implementation can't handle this
 		return;
 	}
@@ -156,7 +156,7 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 			width="0.33em";
 			break;
 	}
-	box = self.document.createElement("span");
+	box = document.createElement("span");
 	box.textContent = String.fromCharCode(160);
 	classes = self.classes ? self.classes.split(" ") : [];
 	classes.push("tc-sparkl");
@@ -173,18 +173,18 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 	for(v=0; v<values.length; v++) {
 		title = titles[v];
 		if(link) {
-			wrap = self.document.createElement("a");
+			wrap = document.createElement("a");
 			title = (link || "").indexOf("%title%") < 0 ?
 				title :
 				self.wiki.filterTiddlers(link.replace(/%title%/mg,titles[v]),self)[0] || title;
 			wrap.setAttribute("href","#" + title);
 			wrap.style.cursor = "pointer";
 		} else {
-			wrap = self.document.createElement("span");
+			wrap = document.createElement("span");
 		}
 		wrap.className = "tc-sparkl-bar";
 		wrap.title = title ? title + " (" + values[v] + ")" : values[v];
-		bar = self.document.createElement("b");
+		bar = document.createElement("b");
 		bar.style.width = width;
 		value = max === min ? 0 : 1 - ((values[v] - min)/(max-min));
 		value = Math.max(0,value);
@@ -199,7 +199,7 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 		if(as === "dots"){
 			px = dotSize + "px";
 			px2 = dotSize/2 + "px";
-			dot = self.document.createElement("i");
+			dot = document.createElement("i");
 			dot.setAttribute("class", "tc-sparkl-dot tc-sparkl-dot-" + self.dots);
 			dot.style.width = px;
 			dot.style.height = px;
