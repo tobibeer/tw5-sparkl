@@ -31,6 +31,11 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 	this.nextSibling = nextSibling;
 	this.computeAttributes();
 	this.execute();
+	// We're not in a browser?
+	if(!$tw.browser) {
+		// Sorry, TW's simple DOM implementation can't handle this
+		return;
+	}
 	var self = this,
 		as,box,bar,classes,dot,dotSize,px,px2,h,
 		link,margin,max,maxWhich,min,minWhich,

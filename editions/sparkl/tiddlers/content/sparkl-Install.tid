@@ -10,6 +10,8 @@ type: text/vnd.tiddlywiki
 
 !! Version History
 
+; 0.5.2 / 2017-02-18
+: had to disabple rendering under node, since TW's DOM can't handle it
 ; 0.5.1 / 2017-01-17
 : added ''link'' pattern via filter, similar to ''values''
 : added ''as'', ''as=dots'' & ''dot-size''
