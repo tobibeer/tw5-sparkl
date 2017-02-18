@@ -168,18 +168,18 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 	for(v=0; v<values.length; v++) {
 		title = titles[v];
 		if(link) {
-			wrap = document.createElement("a");
+			wrap = self.document.createElement("a");
 			title = (link || "").indexOf("%title%") < 0 ?
 				title :
 				self.wiki.filterTiddlers(link.replace(/%title%/mg,titles[v]),self)[0] || title;
 			wrap.setAttribute("href","#" + title);
 			wrap.style.cursor = "pointer";
 		} else {
-			wrap = document.createElement("span");
+			wrap = self.document.createElement("span");
 		}
 		wrap.className = "tc-sparkl-bar";
 		wrap.title = title ? title + " (" + values[v] + ")" : values[v];
-		bar = document.createElement("b");
+		bar = self.document.createElement("b");
 		bar.style.width = width;
 		value = max === min ? 0 : 1 - ((values[v] - min)/(max-min));
 		value = Math.max(0,value);
@@ -194,7 +194,7 @@ SparklWidget.prototype.render = function(parent,nextSibling) {
 		if(as === "dots"){
 			px = dotSize + "px";
 			px2 = dotSize/2 + "px";
-			dot = document.createElement("i");
+			dot = self.document.createElement("i");
 			dot.setAttribute("class", "tc-sparkl-dot tc-sparkl-dot-" + self.dots);
 			dot.style.width = px;
 			dot.style.height = px;
